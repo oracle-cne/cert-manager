@@ -6,7 +6,7 @@ git config --global --add safe.directory "$(pwd)"
 
 CONTAINER_CLI="${CONTAINER_CLI:-podman}"
 
-version="1.18.3"
+version="v1.18.3"
 registry="container-registry.oracle.com/olcne"
 git_commit="$(git rev-parse --short HEAD)"
 
