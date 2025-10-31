@@ -1,0 +1,32 @@
+FROM container-registry.oracle.com/os/oraclelinux:9
+
+ARG VERSION
+ARG GIT_COMMIT
+
+COPY *.repo /etc/yum.repos.d/
+
+RUN dnf update -y && dnf install make git golang -y
+
+WORKDIR /cert-manager
+COPY . .
+
+RUN cd cmd/controller && go build \
+     -o /cert-manager/_bin/cert-manager-controller \
+     -ldflags "-X %{package_name}/pkg/util.AppGitState=clean -X %{package_name}/pkg/util.AppGitCommit=${GIT_COMMIT} -X %{package_name}/pkg/util.AppVersion=%{VERSION}" \
+     main.go
+
+FROM container-registry.oracle.com/os/oraclelinux:9-slim
+
+COPY --from=0 /cert-manager/_bin/cert-manager-controller /usr/bin/cert-manager-controller
+COPY --from=0 /cert-manager/LICENSE /cert-manager/THIRD_PARTY_LICENSES.txt /usr/share/licenses/cert-manager-controller
+RUN microdnf update -y &&\
+    microdnf clean all &&\
+    rm -rf /var/cache/yum/* &&\
+    ln -s /usr/share/licenses /LICENSES
+
+ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV SSL_CERT_FILE="/etc/ssl/certs/ca-bundle.crt"
+
+USER 1000
+
+ENTRYPOINT ["/usr/bin/cert-manager-controller"]
