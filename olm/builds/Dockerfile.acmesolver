@@ -3,8 +3,9 @@ FROM container-registry.oracle.com/os/oraclelinux:9
 ARG VERSION
 ARG GIT_COMMIT
 
+COPY *.repo /etc/yum.repos.d/
+
 RUN dnf update -y && dnf install patch make git golang -y
-RUN dnf repolist --all
 
 WORKDIR /cert-manager
 COPY . .
