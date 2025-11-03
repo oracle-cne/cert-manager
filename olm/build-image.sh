@@ -17,7 +17,7 @@ if [ -f "$repo_file" ]; then
 	echo 'priority=1' >> "$repo_filename"
 	echo 'enabled=1' >> "$repo_filename"
 fi
-cat "$repo_file"
+cat "$repo_filename"
 
 for component in acmesolver cainjector controller startupapicheck webhook; do
 	name="cert-manager-${component}"
