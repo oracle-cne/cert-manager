@@ -10,18 +10,11 @@ version="1.19.1"
 registry="container-registry.oracle.com/olcne"
 git_commit="$(git rev-parse --short HEAD)"
 
-repo_filename="ol_artifacts.repo"
-repo_file="/etc/yum.repos.d/$repo_filename"
-if [ -f "$repo_file" ]; then
-	cp "$repo_file" ./
-	echo 'priority=1' >> "$repo_filename"
-	echo 'enabled=1' >> "$repo_filename"
-fi
-
 for component in acmesolver cainjector controller startupapicheck webhook; do
 	name="cert-manager-${component}"
 	docker_tag="${registry}/${name}:${version}"
 	"${CONTAINER_CLI}" build --pull \
+		-v /etc/yum.repos.d:/etc/yum.repos.d \
 		--build-arg https_proxy="${https_proxy}" \
 		--build-arg VERSION="${version}" \
 		--build-arg GIT_COMMIT="${git_commit}" \
