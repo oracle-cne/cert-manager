@@ -4,6 +4,7 @@ ARG VERSION
 ARG GIT_COMMIT
 
 RUN dnf update -y && dnf install patch make git golang -y
+RUN dnf repolist --all
 
 WORKDIR /cert-manager
 COPY . .

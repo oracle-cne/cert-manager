@@ -14,6 +14,6 @@ imagePipeline(
                     ],
         architectures: ['x86_64', 'aarch64'],
         platforms: ['ol9'],
-        yumOL8Repos: ['ol9_appstream'],
+        yumOL9Repos: ['ol9_appstream'],
         buildScript: "sh olm/build-image.sh",
 )
