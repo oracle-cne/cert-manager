@@ -10,6 +10,9 @@ version="1.19.1"
 registry="container-registry.oracle.com/olcne"
 git_commit="$(git rev-parse --short HEAD)"
 
+# Temp change
+rm /etc/yum.repos.d/ol_artifacts.repo
+
 for component in acmesolver cainjector controller startupapicheck webhook; do
 	name="cert-manager-${component}"
 	docker_tag="${registry}/${name}:${version}"
