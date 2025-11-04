@@ -11,6 +11,7 @@ registry="container-registry.oracle.com/olcne"
 git_commit="$(git rev-parse --short HEAD)"
 
 # Temp change
+ls -ltrh /etc/yum.repos.d
 rm /etc/yum.repos.d/ol_artifacts.repo
 
 for component in acmesolver cainjector controller startupapicheck webhook; do
