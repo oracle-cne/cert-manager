@@ -1,5 +1,4 @@
-@Library('olcne-pipeline@feature/mgianata-ol-artifacts-file') _
-@Library('pipeline-shared@feature/mgianata-ol-artifacts-file')
+@Library('olcne-pipeline') _
 import com.oracle.olcne.pipeline.BranchPattern
 
 String imageTag = "v1.19.1"
