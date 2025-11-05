@@ -10,7 +10,7 @@ COPY . .
 
 RUN cd cmd/controller && go build \
      -o /cert-manager/_bin/cert-manager-controller \
-     -ldflags "-X %{package_name}/pkg/util.AppGitState=clean -X %{package_name}/pkg/util.AppGitCommit=${GIT_COMMIT} -X %{package_name}/pkg/util.AppVersion=%{VERSION}" \
+     -ldflags "-X main.version=%{VERSION} -X %{package_name}/pkg/util.AppGitState=clean -X %{package_name}/pkg/util.AppGitCommit=${GIT_COMMIT} -X %{package_name}/pkg/util.AppVersion=%{VERSION}" \
      main.go
 
 FROM container-registry.oracle.com/os/oraclelinux:9-slim
