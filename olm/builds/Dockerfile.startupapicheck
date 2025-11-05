@@ -8,7 +8,7 @@ RUN dnf update -y && dnf install make git golang -y
 WORKDIR /cert-manager
 COPY . .
 
-RUN cd cmd/startupapicheck && go build \
+RUN cd cmd/startupapicheck && go build -trimpath=false \
      -o /cert-manager/_bin/cert-manager-startupapicheck \
      -ldflags "-X main.version=%{VERSION} -X %{package_name}/pkg/util.AppGitState=clean -X %{package_name}/pkg/util.AppGitCommit=${GIT_COMMIT} -X %{package_name}/pkg/util.AppVersion=%{VERSION}" \
      main.go

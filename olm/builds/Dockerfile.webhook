@@ -9,7 +9,7 @@ WORKDIR /cert-manager
 COPY . .
 
 RUN cd cmd/webhook && go build \
-     -o /cert-manager/_bin/cert-manager-webhook \
+     -o /cert-manager/_bin/cert-manager-webhook -trimpath=false \
      -ldflags "-X main.version=%{VERSION} -X %{package_name}/pkg/util.AppGitState=clean -X %{package_name}/pkg/util.AppGitCommit=${GIT_COMMIT} -X %{package_name}/pkg/util.AppVersion=%{VERSION}" \
      main.go
 
