@@ -14,6 +14,7 @@ for component in acmesolver cainjector controller startupapicheck webhook; do
 	name="cert-manager-${component}"
 	docker_tag="${registry}/${name}:${version}"
 	"${CONTAINER_CLI}" build --pull \
+		--network host \
 		--build-arg https_proxy="${https_proxy}" \
 		--volume /etc/yum.repos.internal.d:/etc/yum.repos.internal.d \
 		--volume /etc/yum.conf:/etc/yum.conf \
