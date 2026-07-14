@@ -606,6 +606,17 @@ github.com/aws/aws-sdk-go-v2/internal/v4a
 SPDX:Apache-2.0
 
 == Copyright
+(no copyright notices found)
+
+--------------------------------- (separator) ----------------------------------
+
+== Dependency
+github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding
+
+== License Type
+SPDX:Apache-2.0
+
+== Copyright
 Copyright 2017 GitHub noreply@github.com
 Copyright 2017 Henri Yandell hyandell@users.noreply.github.com
 Copyright 2017 Jason Del Ponte delpontej@gmail.com
@@ -666,21 +677,6 @@ Copyright 2026 AWS SDK for Go v2 automation user aws-sdk-go-v2-github@amazon.com
 Copyright 2026 GitHub noreply@github.com
 Copyright 2026 Luc Talatinian lucix@amazon.com
 Copyright 2026 Tao Tong taotong@amazon.com
-
---------------------------------- (separator) ----------------------------------
-
-== Dependency
-github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding
-
-== License Type
-SPDX:Apache-2.0
-
-== Copyright
-Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-Copyright 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-Copyright 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-Copyright 2024 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 --------------------------------- (separator) ----------------------------------
 
