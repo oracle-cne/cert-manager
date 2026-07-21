@@ -1,0 +1,19 @@
+@Library('olcne-pipeline') _
+import com.oracle.olcne.pipeline.BranchPattern
+
+String imageTag = "v1.19.6"
+
+imagePipeline(
+        branchPattern: new BranchPattern(master: 'oracle/release/1.19.6', feature: '(?!^release/.*$)(^.*$)'),
+        containers: [
+                        ('container-registry.oracle.com/olcne/cert-manager-acmesolver:' + imageTag ): 'olcne/cert-manager-acmesolver:' + imageTag,
+                        ('container-registry.oracle.com/olcne/cert-manager-cainjector:' + imageTag ): 'olcne/cert-manager-cainjector:' + imageTag,
+                        ('container-registry.oracle.com/olcne/cert-manager-controller:' + imageTag ): 'olcne/cert-manager-controller:' + imageTag,
+                        ('container-registry.oracle.com/olcne/cert-manager-startupapicheck:' + imageTag ): 'olcne/cert-manager-startupapicheck:' + imageTag,
+                        ('container-registry.oracle.com/olcne/cert-manager-webhook:' + imageTag ): 'olcne/cert-manager-webhook:' + imageTag
+                    ],
+        architectures: ['x86_64', 'aarch64'],
+        platforms: ['ol9'],
+        yumOL9Repos: ['ol9_appstream'],
+        buildScript: "sh olm/build-image.sh",
+)
